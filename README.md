@@ -1,10 +1,14 @@
-- 👋 Hi, I’m @vefascript
-- 👀 I’m interested in ...
-- 🌱 I’m currently learning ...
-- 💞️ I’m looking to collaborate on ...
-- 📫 How to reach me ...
+local cpos = game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame
 
-<!---
-vefascript/vefascript is a ✨ special ✨ repository because its `README.md` (this file) appears on your GitHub profile.
-You can click the Preview link to take a look at your changes.
---->
+local stuff = workspace:getDescendants()
+for i=1,#stuff do
+if stuff[i].Name == "Block" and stuff[i].Parent.Name == "Ores" then
+repeat
+wait()
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = stuff[i].CFrame
+game.Players.LocalPlayer.Character.Axe.RemoteEvent:FireServer(stuff[i])
+until stuff[i].Name ~= "Block" or not game.Players.LocalPlayer.Character:findFirstChild("Axe")
+end
+end
+
+game.Players.LocalPlayer.Character.HumanoidRootPart.CFrame = cpos
